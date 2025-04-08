@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aşkım Aley'e</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93') repeat;
+      background-size: cover;
+      background-attachment: fixed;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255, 255, 255, 0.5);
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 100px 20px;
+      color: #8B0000;
+    }
+
+    h1 {
+      font-size: 4em;
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards, grow 3s ease-in-out infinite alternate;
+    }
+
+    .quote {
+      font-size: 2em;
+      font-style: italic;
+      color: #4B0082;
+      margin-bottom: 40px;
+      opacity: 0;
+      animation: fadeIn 2s ease-in forwards;
+      animation-delay: 1s;
+      font-family: 'Brush Script MT', cursive;
+    }
+
+    button {
+      background-color: #800080;
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      position: relative;
+    }
+
+    button:hover {
+      background-color: #9932CC;
+      transform: scale(1.1);
+    }
+
+    .poems {
+      margin-top: 40px;
+      display: none;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 20px;
+      border-radius: 15px;
+      color: rgb(204, 3, 3);
+      max-height: 60vh;
+      overflow-y: auto;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .poems li {
+      margin-bottom: 50px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .flower {
+      position: absolute;
+      opacity: 0.8;
+      animation: float 20s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(-100px); }
+      100% { transform: translateY(110vh); }
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive Tasarım */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .quote {
+        font-size: 1.2em;
+      }
+
+      button {
+        font-size: 1em;
+        padding: 12px 25px;
+      }
+
+      .poems {
+        padding: 15px;
+
+      }
+    }
+
+    /* Sayaç Stil */
+    .countdown {
+      font-size: 2em;
+      color: #8B0000;
+      margin-top: 20px;
+      font-weight: bold;
+      animation: fadeInUp 2s ease-in forwards;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="content">
+    <h1>Aşkım Aley'e</h1>
+    <div class="quote"></div>
+    <button onclick="showPoems()">💖</button>
+    <div class="poems" id="poemList">
+      <ol id="poemItems">
+        <li>"Aşk" - Neyzen Tevik: Aşk bir bakışta başlar, bir gülüşte biter, Aşkı anlatmak zordur, yaşanması gerekir.</li>
+        <li>"Sevdam" - Cemal Süreya: Sevdam, sana inanç gibi, Bir işkence gibi de olsa, Bu yolda yürürüm, Çünkü seni seviyorum.</li>
+        <li>"Ben Sana Vurgunum" - Orhan Veli Kanık: Ben sana vurgunum, Hangi şiir de sana olur Ben sana vurgunum, Hangi şarkı da sana.</li>
+        <li>"Aşkı Memnu" - Halit Refig: Bir aşk vardır, içinde binlerce acı, Bir aşk vardır, içindeki tüm hüzün, Ama hepsinden başka bir şey vardır, İçinde her zaman bir sevdanın izleri.</li>
+        <li>"Ey Aşk" - Can Yücel: Ey aşk, ey yüce aşk, İçimdeki bu ateş Öylesine büyür ki Sonsuza kadar yanar.</li>
+        <li>"Gözlerin" - Edip Cansever: Gözlerin bir deniz gibi derin, Bir tutku, bir his içinde Ve ben o denize dalmaya hazırım.</li>
+        <li>"Bana Ellerini Ver" - Ahmet Arif: Bana ellerini ver, ne olur, Seninle her yere gitmek isterim. Bana gözlerini ver, seninle Bir ömür boyu bakmak isterim.</li>
+        <li>"Bir Gün" - Tevfik Fikret: Bir gün belki bir rüya, Bir gün belki bir hayal, Bir gün belki seni bulurum, Aşkımızda yine birleşiriz.</li>
+        <li>"Şiirimin Sonbaharı" - Sait Faik Abasıyanık: Aşkı bulmak zor, çok zor, Ama seninle buldum seni, Gözlerimde bir hüzün, bir bahar, Aşkım seninle, seninle her zaman.</li>
+        <li>"Aşkın En Güzel Yeri" - Turgut Uyar: Aşkın en güzel yeri, Gözlerindeki sevda, Bir tek sana bakarken Duyduğum mutluluk.</li>
+        <li>"Sonsuz Aşk" - Yunus Emre: Bütün dünyada aşk var, Ama senin gibi bir aşk yok, Aşkın en büyük hali sensin, Sonsuza dek seni seviyorum.</li>
+        <li>"Seni Düşlemek" - Edip Cansever: Seni düşünmek bir çiçek gibi Seninle her şey güzel. Gözlerindeki sevda Beni her zaman sarar.</li>
+        <li>"Aşkın En Güzel Hali" - Ceyhun Atuf Kansu: Aşkın en güzel hali, Bazen sessiz, bazen hüzünlü, Ama hep bir o kadar sıcak, Bir ömür boyu seninle.</li>
+        <li>"Beni Hiç Göremezsin" - Nazım Hikmet: Beni hiç göremezsin, Ama her zaman içindeyim, Gözlerinde bir iz bırakırım, Hep seni seviyorum.</li>
+        <li>"Bir Duygudur Aşk" - Yahya Kemal Beyatlı: Bir duygudur aşk, bir hayaldir, Seninle her an geçer zaman, Bütün dünya sensin, Aşkım sonsuza kadar.</li>
+        <li>"Aşk Ve Zaman" - Attila İlhan: Aşk bir zamanla gelir, Zaman bir aşkın içinde kaybolur, Ve ben seni seviyorum, Sonsuza kadar.</li>
+        <li>"Sana Doğru" - Özdemir Asaf: Sana doğru giden bir yolum var, Ama ben seni hep bulurum. Bir bakışınla kaybolurum, Aşkına her an giden bir yolum var.</li>
+        <li>"Aşk Bir Gün Biter Mi?" - Cemal Süreya: Aşk bir gün biter mi? Sadece derinleşir, büyür Ve her zaman seni severim.</li>
+        <li>"Sonsuz Aşk" - Can Yücel: Her sabah seni düşünerek uyanırım, Geceleri rüyalarımda seni ararım, Sonsuz bir aşk bu, seni seviyorum.</li>
+        <li>"Seninle" - Tevfik Fikret: Seninle olmak, her şeyin anlamı, Birlikte bir hayat kurmak, seninle Her şeyin en güzel hali.</li>
+        <li>"Seninle Olmak" - Orhan Veli Kanık: Seninle olmak, Bir yolculuk gibidir Sonsuza kadar devam eder.</li>
+        <li>-----------devamı seneye inşşş---------------</li>
+        <li></li>
+      </ol>
+    </div>
+    <!-- Sayaç Bölümü -->
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <script>
+    function showPoems() {
+      const poemList = document.getElementById("poemList");
+      poemList.style.display = "block";
+      const items = document.querySelectorAll("#poemItems li");
+      items.forEach((li, index) => {
+        li.style.animationDelay = (index * 0.2) + "s";
+      });
+    }
+
+    const emojiTypes = ['🌼', '🌷', '🌹', '🌻', '🌸', '💖', '⭐', '🦋'];
+    const emojiCount = 60;
+
+    for (let i = 0; i < emojiCount; i++) {
+      const emoji = document.createElement('div');
+      emoji.className = 'flower';
+      emoji.textContent = emojiTypes[Math.floor(Math.random() * emojiTypes.length)];
+      emoji.style.left = Math.random() * 100 + '%';
+      emoji.style.top = Math.random() * 100 + '%'; // Emojilerin rastgele dağılmasını sağladık
+      emoji.style.animationDelay = Math.random() * 20 + 's';
+      emoji.style.fontSize = (Math.random() * 1.5 + 1.5) + 'em';
+      document.body.appendChild(emoji);
+    }
+
+    // 22 Nisan için geri sayım hesaplaması
+    function countdown() {
+      const targetDate = new Date('2025-04-21T00:00:00'); // 22 Nisan 2025
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "Sen gülünce bahar gelir dünyama... İyi ki doğdun bir tanem 💜🎂🥳🎉🎈🎊";
+      } else {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = `${days} Gün ${hours} Saat ${minutes} Dakika ${seconds} Saniye`;
+      }
+    }
+
+    setInterval(countdown, 1000); // Geri sayım her saniyede bir güncellenir.
+  </script>
+</body>
+</html>
